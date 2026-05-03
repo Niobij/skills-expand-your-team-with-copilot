@@ -568,6 +568,17 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         `
         }
+        <div class="share-container">
+          <button class="share-button" aria-label="Share this activity" title="Share this activity">
+            🔗 Share
+          </button>
+          <div class="share-popup hidden">
+            <button class="share-option share-copy" data-activity="${name}">📋 Copy Link</button>
+            <a class="share-option share-twitter" href="#" target="_blank" rel="noopener noreferrer">𝕏 Twitter</a>
+            <a class="share-option share-facebook" href="#" target="_blank" rel="noopener noreferrer">📘 Facebook</a>
+            <a class="share-option share-whatsapp" href="#" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
+          </div>
+        </div>
       </div>
     `;
 
@@ -587,8 +598,89 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
+    // Set up share functionality
+    setupShareButtons(activityCard, name, details);
+
     activitiesList.appendChild(activityCard);
   }
+
+  // Build a shareable URL for an activity
+  function getActivityShareUrl(activityName) {
+    const url = new URL(window.location.href);
+    url.search = "";
+    url.hash = "";
+    url.searchParams.set("activity", activityName);
+    return url.toString();
+  }
+
+  // Set up share buttons for an activity card
+  function setupShareButtons(card, name, details) {
+    const shareButton = card.querySelector(".share-button");
+    const sharePopup = card.querySelector(".share-popup");
+
+    // Toggle popup visibility
+    shareButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+
+      // Close any other open popups
+      document.querySelectorAll(".share-popup").forEach((popup) => {
+        if (popup !== sharePopup) {
+          popup.classList.add("hidden");
+        }
+      });
+
+      sharePopup.classList.toggle("hidden");
+
+      // Build share URLs when opening
+      if (!sharePopup.classList.contains("hidden")) {
+        const shareUrl = getActivityShareUrl(name);
+        const shareText = `Check out "${name}" at Mergington High School! ${details.description.length > 100 ? details.description.slice(0, 97) + "..." : details.description}`;
+
+        const twitterLink = card.querySelector(".share-twitter");
+        twitterLink.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+
+        const facebookLink = card.querySelector(".share-facebook");
+        facebookLink.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+
+        const whatsappLink = card.querySelector(".share-whatsapp");
+        whatsappLink.href = `https://wa.me/?text=${encodeURIComponent(shareText + " " + shareUrl)}`;
+      }
+    });
+
+    // Copy link button
+    const copyButton = card.querySelector(".share-copy");
+    copyButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const shareUrl = getActivityShareUrl(name);
+
+      if (navigator.share) {
+        navigator.share({
+          title: `${name} - Mergington High School`,
+          text: details.description,
+          url: shareUrl,
+        }).catch((error) => {
+          if (error.name !== "AbortError") {
+            console.error("Error sharing activity:", error);
+          }
+        });
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(shareUrl).then(() => {
+          copyButton.textContent = "✅ Copied!";
+          setTimeout(() => {
+            copyButton.textContent = "📋 Copy Link";
+          }, 2000);
+        });
+      }
+      sharePopup.classList.add("hidden");
+    });
+  }
+
+  // Close share popups when clicking elsewhere on the page
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".share-popup").forEach((popup) => {
+      popup.classList.add("hidden");
+    });
+  });
 
   // Event listeners for search and filter
   searchInput.addEventListener("input", (event) => {
