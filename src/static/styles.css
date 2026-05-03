@@ -183,13 +183,6 @@ section h3 {
   line-height: 1.4;
 }
 
-.activity-card-actions {
-  margin-top: auto;
-  padding-top: 10px;
-  display: flex;
-  justify-content: center;
-}
-
 /* Activity Tag */
 .activity-tag {
   position: absolute;
@@ -474,6 +467,73 @@ footer {
   padding: 10px;
   color: var(--text-secondary);
   font-size: 0.8rem;
+}
+
+/* Social Share Button */
+.share-container {
+  position: relative;
+}
+
+.share-button {
+  background-color: var(--background);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.share-button:hover {
+  background-color: var(--primary-light);
+  color: white;
+  border-color: var(--primary-light);
+}
+
+.share-popup {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  right: 0;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.share-option {
+  display: block;
+  width: 100%;
+  padding: 8px 14px;
+  font-size: 0.82rem;
+  text-align: left;
+  text-decoration: none;
+  color: var(--text-primary);
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.share-option:hover {
+  background-color: var(--background);
+  color: var(--primary);
+}
+
+/* Override the default .activity-card-actions to accommodate share button */
+.activity-card-actions {
+  margin-top: auto;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 8px;
 }
 
 /* Search and Filter Components - Updated for Sidebar */
