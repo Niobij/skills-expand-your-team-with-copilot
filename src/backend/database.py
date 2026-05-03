@@ -163,6 +163,17 @@ initial_activities = {
         },
         "max_participants": 16,
         "participants": ["william@mergington.edu", "jacob@mergington.edu"]
+    },
+    "Manga Maniacs": {
+        "description": "Ikuzo! — Let's go! Dive headfirst into the vibrant world of Japanese manga, where epic shonen battles, heartwarming slice-of-life tales, and mind-bending mysteries come to life panel by panel. Channel your inner protagonist, debate the greatest arcs in manga history, and uncover hidden gems from the golden shelves of Akihabara. Whether you wield a shonen battle cry or prefer the quiet poetry of a josei story, your manga journey begins here. Yosh! — Let's do this!",
+        "schedule": "Tuesdays, 5:00 PM (17:00) - 6:00 PM (18:00)",
+        "schedule_details": {
+            "days": ["Tuesday"],
+            "start_time": "17:00",
+            "end_time": "18:00"
+        },
+        "max_participants": 25,
+        "participants": []
     }
 }
 
