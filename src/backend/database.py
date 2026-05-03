@@ -166,7 +166,7 @@ initial_activities = {
     },
     "Manga Maniacs": {
         "description": "Explore the fantastic stories of the most interesting characters from Japanese Manga (graphic novels). Discuss your favorite series, discover new titles, and dive deep into the art and culture of manga. Whether you're a seasoned reader or just getting started, all are welcome to join the adventure!",
-        "schedule": "Tuesdays, 7:00 PM - 8:00 PM",
+        "schedule": "Tuesdays, 7:00 PM (19:00) - 8:00 PM (20:00)",
         "schedule_details": {
             "days": ["Tuesday"],
             "start_time": "19:00",
