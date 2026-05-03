@@ -165,7 +165,7 @@ initial_activities = {
         "participants": ["william@mergington.edu", "jacob@mergington.edu"]
     },
     "Manga Maniacs": {
-        "description": "Explore the fantastic stories of the most interesting characters from Japanese Manga (graphic novels). Discuss your favorite series, discover new titles, and dive deep into the art and culture of manga. Whether you're a seasoned reader or just getting started, all are welcome to join the adventure!",
+        "description": "Ikuzo! — Let's go! Dive headfirst into the vibrant world of Japanese manga, where epic shonen battles, heartwarming slice-of-life tales, and mind-bending mysteries come to life panel by panel. Channel your inner protagonist, debate the greatest arcs in manga history, and uncover hidden gems from the golden shelves of Akihabara. Whether you wield a shonen battle cry or prefer the quiet poetry of a josei story, your manga journey begins here. Yosh! — Let's do this!",
         "schedule": "Tuesdays, 7:00 PM (19:00) - 8:00 PM (20:00)",
         "schedule_details": {
             "days": ["Tuesday"],
